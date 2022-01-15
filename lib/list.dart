@@ -50,7 +50,9 @@ class _ListPageState extends State<ListPage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: FutureBuilder<List>(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [FutureBuilder<List>(
           future: fetch(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
@@ -131,6 +133,7 @@ class _ListPageState extends State<ListPage> {
             }
             return const Text('Loading...');
           },
+        )],
         )
       ),
     );
