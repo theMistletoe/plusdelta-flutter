@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blueGrey,
       ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('ja'),
       ],
-      home: const MyHomePage(title: '+/Δ'),
+      home: const MyHomePage(title: 'Home'),
     );
   }
 }
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: const Icon(Icons.list),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(
-                builder: (context) => const ListPage(title: 'RetroList')
+                builder: (context) => const ListPage(title: 'RetroHistory')
               ));
             },
             tooltip: 'Retro History',
@@ -119,20 +119,26 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            const Padding(padding: EdgeInsets.all(30)),
+            const Image(
+              width: 200,
+              image: AssetImage('images/logo_transparent.png')
+            ),
             const Text(
               'How was today?',
               style: TextStyle(
                 fontSize: 25
               ),
             ),
-            const Padding(padding: EdgeInsets.all(10)),
+            const Padding(padding: EdgeInsets.all(30)),
             TextField(
               keyboardType: TextInputType.multiline,
               maxLines: null,
               decoration: const InputDecoration(
                 labelText: '+',
+                hintText: 'Things good or to continue'
               ),
               controller: _plusThingController,
             ),
@@ -141,17 +147,19 @@ class _MyHomePageState extends State<MyHomePage> {
               maxLines: null,
               decoration: const InputDecoration(
                 labelText: 'Δ',
+                hintText: 'Things bad or to quit'
               ),
               controller: _deltaThingController,
             ),
-            TextField(
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              decoration: const InputDecoration(
-                labelText: 'NextAction',
-              ),
-              controller: _nextActionController,
+          TextField(
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
+            decoration: const InputDecoration(
+              labelText: 'NextAction',
+              hintText: 'Action for improvement'
             ),
+            controller: _nextActionController,
+          ),
           ],
         ),
       ),
