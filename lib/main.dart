@@ -101,66 +101,71 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            const Padding(padding: EdgeInsets.all(30)),
-            const Image(
-              width: 200,
-              image: AssetImage('images/logo_transparent.png')
-            ),
-            const Text(
-              'How was today?',
-              style: TextStyle(
-                fontSize: 25
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Center(
+            // Center is a layout widget. It takes a single child and positions it
+            // in the middle of the parent.
+            child: Column(
+              // Column is also a layout widget. It takes a list of children and
+              // arranges them vertically. By default, it sizes itself to fit its
+              // children horizontally, and tries to be as tall as its parent.
+              //
+              // Invoke "debug painting" (press "p" in the console, choose the
+              // "Toggle Debug Paint" action from the Flutter Inspector in Android
+              // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+              // to see the wireframe for each widget.
+              //
+              // Column has various properties to control how it sizes itself and
+              // how it positions its children. Here we use mainAxisAlignment to
+              // center the children vertically; the main axis here is the vertical
+              // axis because Columns are vertical (the cross axis would be
+              // horizontal).
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                const Padding(padding: EdgeInsets.all(30)),
+                const Image(
+                  width: 200,
+                  image: AssetImage('images/logo_transparent.png')
+                ),
+                const Text(
+                  'How was today?',
+                  style: TextStyle(
+                    fontSize: 25
+                  ),
+                ),
+                const Padding(padding: EdgeInsets.all(30)),
+                TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  decoration: const InputDecoration(
+                    labelText: '+',
+                    hintText: 'Things good or to continue'
+                  ),
+                  controller: _plusThingController,
+                ),
+                TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  decoration: const InputDecoration(
+                    labelText: 'Δ',
+                    hintText: 'Things bad or to quit'
+                  ),
+                  controller: _deltaThingController,
+                ),
+              TextField(
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                decoration: const InputDecoration(
+                  labelText: 'NextAction',
+                  hintText: 'Action for improvement'
+                ),
+                controller: _nextActionController,
               ),
+              ],
             ),
-            const Padding(padding: EdgeInsets.all(30)),
-            TextField(
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              decoration: const InputDecoration(
-                labelText: '+',
-                hintText: 'Things good or to continue'
-              ),
-              controller: _plusThingController,
-            ),
-            TextField(
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              decoration: const InputDecoration(
-                labelText: 'Δ',
-                hintText: 'Things bad or to quit'
-              ),
-              controller: _deltaThingController,
-            ),
-          TextField(
-            keyboardType: TextInputType.multiline,
-            maxLines: null,
-            decoration: const InputDecoration(
-              labelText: 'NextAction',
-              hintText: 'Action for improvement'
-            ),
-            controller: _nextActionController,
           ),
-          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
