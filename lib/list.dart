@@ -60,7 +60,6 @@ class _ListPageState extends State<ListPage> {
                 if (snapshot.hasData) {
                   var data = snapshot.data;
                   return ListView.builder(
-                    padding: const EdgeInsets.only(left: 3, right: 3),
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: data?.length,
@@ -86,7 +85,7 @@ class _ListPageState extends State<ListPage> {
                             Text(
                               data?[index].plus,
                               textAlign: TextAlign.left,
-                              style: const TextStyle(fontSize: 25.0),
+                              style: const TextStyle(fontSize: 15.0),
                             ),
                             const Padding(padding: EdgeInsets.all(5)),
                             const Text(
@@ -100,7 +99,7 @@ class _ListPageState extends State<ListPage> {
                             Text(
                               data?[index].delta,
                               textAlign: TextAlign.left,
-                              style: const TextStyle(fontSize: 25.0),
+                              style: const TextStyle(fontSize: 15.0),
                             ),
                             const Padding(padding: EdgeInsets.all(5)),
                             const Text(
@@ -114,7 +113,7 @@ class _ListPageState extends State<ListPage> {
                             Text(
                               data?[index].nextAction,
                               textAlign: TextAlign.left,
-                              style: const TextStyle(fontSize: 25.0),
+                              style: const TextStyle(fontSize: 15.0),
                             ),
                             Container(
                               alignment: Alignment.bottomRight,
