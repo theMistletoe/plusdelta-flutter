@@ -133,16 +133,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 const Text(
                   'How was today?',
                   style: TextStyle(
-                    fontSize: 25
+                    fontSize: 18
                   ),
                 ),
-                const Padding(padding: EdgeInsets.all(30)),
+                const Text(
+                  'Let’s retrospect good/bad things and\naction for improvement or enhauncement.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey,
+                  ),
+                ),
+                const Padding(padding: EdgeInsets.all(10)),
                 TextField(
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
                   decoration: const InputDecoration(
                     labelText: '+',
-                    hintText: 'Things good or to continue'
+                    hintText: 'Write things good or to continue'
                   ),
                   controller: _plusThingController,
                 ),
@@ -151,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   maxLines: null,
                   decoration: const InputDecoration(
                     labelText: 'Δ',
-                    hintText: 'Things bad or to quit'
+                    hintText: 'Write things bad or to quit'
                   ),
                   controller: _deltaThingController,
                 ),
@@ -160,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 maxLines: null,
                 decoration: const InputDecoration(
                   labelText: 'NextAction',
-                  hintText: 'Action for improvement'
+                  hintText: 'Write Action for improvement'
                 ),
                 controller: _nextActionController,
               ),
@@ -210,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
         tooltip: '投稿',
-        child: const Icon(Icons.send),
+        child: const Icon(Icons.save),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
