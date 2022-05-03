@@ -47,94 +47,99 @@ class _ListPageState extends State<ListPage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [FutureBuilder<List>(
-          future: fetch(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              var data = snapshot.data;
-              return ListView.builder(
-                padding: const EdgeInsets.only(left: 3, right: 3),
-                shrinkWrap: true,
-                itemCount: data?.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    width: double.infinity,
-                    alignment: Alignment.topLeft,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 1.0)],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "+",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color: Colors.grey,
-                          ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Center(
+            // Center is a layout widget. It takes a single child and positions it
+            // in the middle of the parent.
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [FutureBuilder<List>(
+              future: fetch(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  var data = snapshot.data;
+                  return ListView.builder(
+                    padding: const EdgeInsets.only(left: 3, right: 3),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: data?.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        width: double.infinity,
+                        alignment: Alignment.topLeft,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 1.0)],
                         ),
-                        Text(
-                          data?[index].plus,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(fontSize: 25.0),
-                        ),
-                        const Padding(padding: EdgeInsets.all(5)),
-                        const Text(
-                          "Δ",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color: Colors.grey
-                          ),
-                        ),
-                        Text(
-                          data?[index].delta,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(fontSize: 25.0),
-                        ),
-                        const Padding(padding: EdgeInsets.all(5)),
-                        const Text(
-                          "NextAction",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color: Colors.grey
-                          ),
-                        ),
-                        Text(
-                          data?[index].nextAction,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(fontSize: 25.0),
-                        ),
-                        Container(
-                          alignment: Alignment.bottomRight,
-                          child:
-                            Text(
-                              data?[index]?.getCreatedAt(),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "+",
                               textAlign: TextAlign.left,
-                              style: const TextStyle(
+                              style: TextStyle(
+                                fontSize: 12.0,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              data?[index].plus,
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(fontSize: 25.0),
+                            ),
+                            const Padding(padding: EdgeInsets.all(5)),
+                            const Text(
+                              "Δ",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
                                 fontSize: 12.0,
                                 color: Colors.grey
                               ),
                             ),
+                            Text(
+                              data?[index].delta,
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(fontSize: 25.0),
+                            ),
+                            const Padding(padding: EdgeInsets.all(5)),
+                            const Text(
+                              "NextAction",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontSize: 12.0,
+                                color: Colors.grey
+                              ),
+                            ),
+                            Text(
+                              data?[index].nextAction,
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(fontSize: 25.0),
+                            ),
+                            Container(
+                              alignment: Alignment.bottomRight,
+                              child:
+                                Text(
+                                  data?[index]?.getCreatedAt(),
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(
+                                    fontSize: 12.0,
+                                    color: Colors.grey
+                                  ),
+                                ),
+                            )
+                          ]
                         )
-                      ]
-                    )
+                      );
+                    },
                   );
-                },
-              );
-            }
-            return const Text('Loading...');
-          },
-        )],
-        )
+                }
+                return const Text('Loading...');
+              },
+              )],
+            )
+          ),
+        ),
       ),
     );
   }
